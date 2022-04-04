@@ -1,0 +1,37 @@
+----------------------
+query getAllUser {
+  users {
+    firstName
+    lastName
+    id
+  }
+}
+----------------------
+query getUserWithQuotes {
+  users {
+    id
+    firstName
+    email
+    quotes {
+      name
+    }
+  }
+}
+-----------------------
+query getSingleuser
+{
+  user(id:"001"){
+    firstName
+    lastName
+    quotes{
+      name
+    }
+  }
+}
+-----------------------
+query getIndividualsQuotes
+{
+  iquotes(by:"001"){
+    name
+  }
+}

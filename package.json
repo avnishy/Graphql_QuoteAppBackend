@@ -1,0 +1,22 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Avnish Yadav",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.5.0",
+    "apollo-server-core": "^3.5.0",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.7.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9",
+    "react-router-dom": "^6.3.0"
+  }
+}
