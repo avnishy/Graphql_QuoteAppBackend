@@ -1,5 +1,3 @@
-import { quotes, users } from "./fakedb.js";
-import { randomBytes } from "crypto";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -10,19 +8,20 @@ const Quote = mongoose.model("Quote");
 
 const resolvers = {
 
-
   Query: {
     users: async () => await User.find({}),
     user: async (_, { _id }) => await User.findOne({ _id }), //First argument in user is parent Here User is an root level Entity so we pass _
     iquotes: async (_, { by }) => await Quote.find({ by }), //First argument in user is parent Here User is an root level Entity so we pass _
     quotes: async () => await Quote.find({}).populate("by","_id firstName lastName"),
+    myprofile : async (_,args,{userID})=>{
+      if (!userID) throw new Error("You Must be Logged in")
+      return await User.findOne({_id:userID})
+    }
   },
-
 
   user: {
     quotes: async (ur) => await Quote.find({ by: ur._id }),
   },
-
 
   Mutation: {
     signupUser: async (_, { userNew }) => {
@@ -62,5 +61,4 @@ const resolvers = {
     },
   },
 };
-
 export default resolvers;
